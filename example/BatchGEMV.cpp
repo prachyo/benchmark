@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
     }
 
     in->y = new double[in->Dim1];
-    in->NumTrials = 2;
+    in->NumTrials = 10;
 
     auto *st = new Stats( "GEMV_Batch", "MV", in->NumTrials);
     for (int i = 0; i < in->Dim1; ++i) {

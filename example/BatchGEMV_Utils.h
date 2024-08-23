@@ -141,7 +141,7 @@ public:
 };
 
 #ifdef OPENMP_ENABLED
-class GEMVBench_OpenMP : public GEMVWithPAPI {
+class GEMVBench_OpenMP : public GEMVBench_Naive {
 protected:
   Timer execute() override {
     Timer t;
@@ -152,7 +152,7 @@ protected:
   }
 
 public:
-  GEMVBench_OpenMP(Inputs<double> *In1, Stats *Stat1) : GEMVWithPAPI(In1, Stat1)
+  GEMVBench_OpenMP(Inputs<double> *In1, Stats *Stat1) : GEMVBench_Naive(In1, Stat1)
   {}
 
   ~GEMVBench_OpenMP(){
@@ -161,7 +161,7 @@ public:
 #endif
 
 #ifdef TBB_ENABLED
-class GEMVBench_TBB : public GEMVWithPAPI {
+class GEMVBench_TBB : public GEMVBench_Naive {
 protected:
   Timer execute() override {
     Timer t;
@@ -172,7 +172,7 @@ protected:
   }
 
 public:
-  GEMVBench_TBB(Inputs<double> *In1, Stats *Stat1) : GEMVWithPAPI(In1, Stat1)
+  GEMVBench_TBB(Inputs<double> *In1, Stats *Stat1) : GEMVBench_Naive(In1, Stat1)
   {}
 
   ~GEMVBench_TBB(){
@@ -181,7 +181,7 @@ public:
 #endif
 
 #ifdef CUDA_ENABLED
-class GEMVBench_CUDA: public GEMVWithPAPI {
+class GEMVBench_CUDA: public GEMVBench_Naive{
 protected:
   Timer execute() override {
     Timer t;
@@ -192,7 +192,7 @@ protected:
   }
 
 public:
-  GEMVBench_CUDA(Inputs<double> *In1, Stats *Stat1) : GEMVWithPAPI(In1, Stat1)
+  GEMVBench_CUDA(Inputs<double> *In1, Stats *Stat1) : GEMVBench_Naive(In1, Stat1)
   {}
 
   ~GEMVBench_CUDA(){
@@ -201,7 +201,7 @@ public:
 #endif
 
 #ifdef OPENBLAS_ENABLED
-class GEMVBench_BLAS: public GEMVWithPAPI {
+class GEMVBench_BLAS: public GEMVBench_Naive {
 protected:
   Timer execute() override {
     Timer t;
@@ -212,7 +212,7 @@ protected:
   }
 
 public:
-  GEMVBench_BLAS(Inputs<double> *In1, Stats *Stat1) : GEMVWithPAPI(In1, Stat1)
+  GEMVBench_BLAS(Inputs<double> *In1, Stats *Stat1) : GEMVBench_Naive(In1, Stat1)
   {}
 
   ~GEMVBench_BLAS(){
