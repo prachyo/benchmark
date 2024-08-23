@@ -3,7 +3,7 @@
 int main(int argc, char *argv[]) {
 
     auto *in = new Inputs<double>(1000, 1000, 0, 0);
-    in->ExpName = "GEMV_With_PAPI";
+    in->ExpName = "GEMV_Batch";
     in->CorrectSol = new double[in->Dim1];
 
     // generate a random matrix
