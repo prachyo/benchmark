@@ -35,6 +35,26 @@ int main(int argc, char *argv[]) {
 
     std::map<std::string, std::string> stats;
 
+    auto *gemv_loop = new GEMVBench_LoopUnrolling(in, st);
+    gemv_loop->run();
+    stats["GEMV_LoopUnrolling"] = gemv_loop->printStats();
+    delete gemv_loop;
+
+    auto *gemv_simd = new GEMVBench_SIMD(in, st);
+    gemv_simd->run();
+    stats["GEMV_SIMD"] = gemv_simd->printStats();
+    delete gemv_simd;
+
+    auto *gemv_cache = new GEMVBench_CacheBlocking(in, st);
+    gemv_cache->run();
+    stats["GEMV_CacheBlocking"] = gemv_cache->printStats();
+    delete gemv_cache;
+
+    auto *gemv_thread = new GEMVBench_MultiThreading(in, st);
+    gemv_thread->run();
+    stats["GEMV_MultiThreading"] = gemv_thread->printStats();
+    delete gemv_thread;
+
     #ifdef OPENMP_ENABLED
     auto *gemv_openmp = new GEMVBench_OpenMP(in, st);
     gemv_openmp->run();
